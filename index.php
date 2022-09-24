@@ -51,7 +51,7 @@ $resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                             
                             <td>
                                 <a href="editar_cliente.php?id=<?php echo $cliente['id']?>" class="btn btn-primary">Editar</a>
-                                <th><a href="delete.php?id=<?php echo $cliente['id']; ?>" class="btn btn-danger">Eliminar</a></th>
+                               
                                 
                             </td>
                         </tr>

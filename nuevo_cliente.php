@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD']=== 'POST'){
     '$tipo_cliente','$tipo_documento','$numero_documento','1')";
 
     
-    $resultado = $db->query($sql);
+$resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC); 
     if($resultado){
         header ('location:index.php');
     }
@@ -27,19 +27,22 @@ if($_SERVER['REQUEST_METHOD']=== 'POST'){
 }
 
 
+
 $sql = "SELECT * FROM tipo_cliente";
-$resultado = $db->query($sql);
+$resultado = $bd->query($sql);
 $tipos_cliente = [];
-while($tipo = $resultado->fetch_assoc()){
+while($tipo = $resultado->fetch()){
     $tipos_cliente[] = $tipo;
 }
 
 $sql = "SELECT * FROM tipo_documento";
-$resultado = $db->query($sql);
+$resultado = $bd->query($sql);
 $tipos_documento = [];
-while($tipo = $resultado->fetch_assoc()){
+while($tipo = $resultado->fetch()){
     $tipos_documento[] = $tipo;
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -113,9 +116,9 @@ while($tipo = $resultado->fetch_assoc()){
                 <textarea name="referencia" id="referencia" rows="5" class="form-control"></textarea>
             </div>
 
-            <input type="submit" value="Grabar" class="btn btn-primary">
+            
+            <a href="index.php" class="btn btn-danger">Grabar</a>
         </form>
-
     </div>
 </body>
 

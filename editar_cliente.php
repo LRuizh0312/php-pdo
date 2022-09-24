@@ -2,7 +2,7 @@
 require('data/basedatos.php');
 $id = $_GET['id'];   
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    echo 'Enviado por el método post';
+    
     $nombres = $_POST ['nombre'];
     $apellidos = $_POST ['apellido'];
     $razon_social = $nombres. ' '.$apellidos;
@@ -33,26 +33,23 @@ $sql = "SELECT * FROM cliente WHERE id = $id";
 $resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC);               
        
 /*
-
 //PARA EL CASO DE TIPO_CLIENTE 
 $sql = "SELECT * FROM  tipo_cliente";      
-$resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC);  
-
+$resultado = $bd->query($sql);  
 $tipos_cliente = [];                       
-while($tipo = $resultado->fetch_assoc()){  
+while($tipo = $resultado->fetch()){  
 $tipos_cliente[] = $tipo;                  
 }                                          
                                                       
-                                           
+                                        
 ////PARA EL CASO DE TIPO_DOCUMENTO
 $sql = "SELECT * FROM tipo_documento";
-$resultado = $db->query($sql);          
+$resultado = $bd->query($sql);          
 $tipos_documento = [];                     
-while($tipo = $resultado->fetch_assoc()){  
+while($tipo = $resultado->fetch()){  
     $tipos_documento[] = $tipo;            
     }                                      
 */
-
 foreach ($resultado as  $cliente):
 
 ?>
@@ -146,6 +143,7 @@ foreach ($resultado as  $cliente):
             <input type="submit" value="Grabar" class="btn btn-primary">
             
             </form>
+            
             <?php
             endforeach;
             ?>

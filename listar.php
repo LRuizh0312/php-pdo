@@ -8,7 +8,7 @@ $tipoCliente = null;
 $tipo = 0;
 
 $sql = "SELECT * FROM tipo_cliente";
-$resultado = $db->query($sql);
+$resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 $numero_filas = $resultado->num_rows;
 for ($idx=0; $idx < $numero_filas; $idx++) { 
     $row = $resultado->fetch_assoc();
@@ -18,7 +18,7 @@ for ($idx=0; $idx < $numero_filas; $idx++) {
 if($_SERVER['REQUEST_METHOD'] ==='POST'){
     $tipo = $_POST['cboTipo'];
     $sql = "SELECT * FROM tipo_cliente WHERE id = $tipo";
-    $resultado = $db->query($sql);
+    $resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     if($resultado->num_rows > 0){
         $tipoCliente = $resultado->fetch_object();
     }
@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
                 ON A.id_tipo_cliente = B.id INNER JOIN tipo_documento C
                 ON A.id_tipo_documento = C.id
             WHERE A.id_tipo_cliente = $tipo;";
-    $resultado = $db->query($sql);
+    $resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     if($resultado->num_rows > 0){
         $cantidad_clientes = $resultado->num_rows;
         while($row = $resultado->fetch_assoc()):
