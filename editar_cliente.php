@@ -30,9 +30,9 @@ $resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 //PARA INSERTAR LOS DATOS//
 $sql = "SELECT * FROM cliente WHERE id = $id";  
-$resultado =$bd->query($sql)->fetchAll(PDO::FETCH_ASSOC);               
+$resultado =$bd->query($sql);               
        
-/*
+
 //PARA EL CASO DE TIPO_CLIENTE 
 $sql = "SELECT * FROM  tipo_cliente";      
 $resultado = $bd->query($sql);  
@@ -49,7 +49,7 @@ $tipos_documento = [];
 while($tipo = $resultado->fetch()){  
     $tipos_documento[] = $tipo;            
     }                                      
-*/
+
 foreach ($resultado as  $cliente):
 
 ?>
